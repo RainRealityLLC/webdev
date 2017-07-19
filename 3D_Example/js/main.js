@@ -74,7 +74,8 @@ function drop(ev) {
 	
 	while(scene.children.length > 0){					// Clear all objects from scene first in order to add new object - BJL 071817 -
 		
-			scene.remove(scene.children[0]); 
+			scene.remove(scene.children[0]);
+			console.log(scene.children[0]);
 		
 	}
 	
@@ -120,7 +121,7 @@ function drop(ev) {
 
 	}
 
-	else if (id=="box") {
+	if (id=="box") {
 		
 		scene.add( new THREE.HemisphereLight() );
 		var directionalLight = new THREE.DirectionalLight( 0xffeedd );
@@ -138,6 +139,36 @@ function drop(ev) {
 
 		scene.add(mesh);
 
+	}
+	
+	else if (id=="teapot"){
+		
+		// LIGHTS
+		var ambientLight = new THREE.AmbientLight( 0x333333 );	// 0.2
+		var light = new THREE.DirectionalLight( 0xFFFFFF, 1.0 );
+		
+		scene.add( ambientLight );
+		scene.add( light );
+		
+		var teapotSize = 50;
+		var tess = 15;
+		
+		var wireMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, wireframe: true } );
+		var shading = "wireframe";
+		
+		var teapotGeometry = new THREE.TeapotBufferGeometry( 50,
+			10,
+			true,
+			true,
+			true,
+			false,
+			true );
+		
+		console.log(teapotGeometry)
+		
+		teapot = new THREE.Mesh(
+			teapotGeometry, wireMaterial  );	// if no match, pick Phong
+		scene.add( teapot );
 	}
 
 
