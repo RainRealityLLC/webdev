@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+	<head>
+	
+		<title>three.js webgl - loaders - 3DS loader</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		
+		<script src="threejs/Three.js"></script>
+		<script src="threejs/TrackballControls.js"></script>
+		<script src="threejs/TDSLoader.js"></script>
+		<script src="js/main.js"></script>
+		
+	</head>
+
+	<body onload="init(); animate();">
+		
+		<div id="spaceship" class="dragged-items" draggable="true" draggable="true" ondragstart="drag(event)">Spaceship</div>
+		<div id="box" class="dragged-items" draggable="true" draggable="true" ondragstart="drag(event)">Box</div>
+		
+		<hr>
+		
+		<div id="add-edit-text" onclick="editText()">Add/Edit Text</div>
+		
+		<div id="div-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+		
+			<div hidden id="td-text"></div>
+			
+		</div>
+
+
+	</body>
+	
+</html>
