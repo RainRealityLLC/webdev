@@ -64,3 +64,11 @@ body {
 	text-decoration: underline;
 	cursor: pointer
 }
+
+.instructions{
+	margin: 25px;
+}
+
+.instructions p{
+	line-height: 25px;
+}
