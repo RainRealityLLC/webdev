@@ -12,7 +12,7 @@
 		<script src="threejs/Three.js"></script>
 		<script src="threejs/TrackballControls.js"></script>
 		<script src="threejs/TDSLoader.js"></script>
-		<script src="threejs/TeapotBufferGeometry.js"></script>
+		<script src="threejs/SEA3D.js"></script>
 		
 		<script src="js/main.js"></script>
 		
@@ -22,29 +22,48 @@
 		
 		<div class="instructions">
 		
-			<h1>3D Objects</h1>
+			<h1>3D Controller</h1>
 			<p>
 			Please drag and drop a 3D object option to the purple plane to view it. You also have the option <br>
 			to add and edit text on the place.
 			</p>
 			
+			<hr>
+			
 		</div>
 		
-		<hr>
+		<div class="objects">
 		
-		<div id="spaceship" class="dragged-items" draggable="true" draggable="true" ondragstart="drag(event)">Spaceship</div>
-		<div id="box" class="dragged-items" draggable="true" draggable="true" ondragstart="drag(event)">Box</div>
-		<div id="teapot" class="dragged-items" draggable="true" draggable="true" ondragstart="drag(event)">Teapot</div>
-		
-		<hr>
-		
-		<div id="add-edit-text" onclick="editText()">Add/Edit Text</div>
+			<h2>3D Objects</h2>
+			
+			<hr>
+			
+			<div id="spaceship" class="dragged-items" draggable="true" draggable="true" ondragstart="drag(event)">Spaceship</div>
+			<div id="box" class="dragged-items" draggable="true" draggable="true" ondragstart="drag(event)">Box</div>
+
+		</div>
+
 		
 		<div id="div-container" ondrop="drop(event)" ondragover="allowDrop(event)">
 		
 			<div hidden id="td-text"></div>
 			
 		</div>
+		
+		
+		
+		<ul hidden id="menu">
+		
+			<li id="menu-option" onclick="editText()">Edit Text</li>
+		
+			<li><button id="up" onclick="moveObject(id)">/\</button></li>
+			<li><button id="left" onclick="moveObject(id)">&lt;</button><button id="reset" onclick="moveObject(id)">O</button><button id="right" onclick="moveObject(id)">&gt;</button></li>
+			<li><button id="down" onclick="moveObject(id)">\/</button></li>
+			
+			<li id="menu-option" onclick="removeObject()">Remove</li>
+			
+		</ul>
+		
 
 
 	</body>

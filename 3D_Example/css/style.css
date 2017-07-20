@@ -21,14 +21,14 @@ body {
 
 .dragged-items{
 	color: #FFF;
-	margin: 25px;
-	margin-right: 0px;
+	margin: 15px;
+	margin-left: 0px;
 	padding: 15px;
 	background-color: cadetblue;
 	border-radius: 10px;
 	width: 150px;
 	text-align: center;
-	display: inline-block;
+	cursor: pointer;
 }
 
 #td-text{
@@ -49,26 +49,63 @@ body {
 	background-color: darkseagreen;
 	width: 150px;
 	border-radius: 10px;
+	cursor: pointer;
 }
 
 #div-container{
 	margin: 25px;
 	width: 410px;
-	height: 730px;
+	height: 730px;;
 	border-style: ridge;
+	float: left;
 }
 
 #info a, .button {
 	color: #f00;
 	font-weight: bold;
 	text-decoration: underline;
-	cursor: pointer
+	cursor: pointer;
 }
 
-.instructions{
+.instructions {
 	margin: 25px;
 }
 
-.instructions p{
+.instructions p {
 	line-height: 25px;
+}
+
+.objects {
+	margin: 25px;
+	margin-top: 0px;
+	float: left;
+}
+
+#menu {
+	margin-top: 25px;
+	float: left;
+	list-style: none;
+	padding: 0;
+	text-align: center;
+}
+
+#menu button {
+	cursor: pointer;
+	background-color: darkseagreen;
+	border-style: none;
+	padding: 10px;
+	color: #FFF;
+	font-weight: 600;
+	margin: 2px;
+	border-radius: 5px;
+}
+
+#menu-option {
+	color: #FFF;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
+	background-color: darkseagreen;
+	border-radius: 5px;
+	cursor: pointer;
 }

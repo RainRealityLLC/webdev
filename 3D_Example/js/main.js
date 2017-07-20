@@ -2,6 +2,9 @@ var container, controls;			// Declare vars for creating space where 3D objects w
 var camera, scene, renderer;
 
 
+
+
+
 function init() {
 	
 	container = document.getElementById('div-container');							// Intialize container as div-container that is already within the DOM - BJL 071817 -
@@ -37,6 +40,10 @@ function init() {
 	
 }
 
+
+
+
+
 function resize() {
 	
 	camera.aspect = container.clientWidth / container.clientHeight;			// Update camera aspect based on window resize - BJL 071817 -
@@ -47,6 +54,10 @@ function resize() {
 	
 }
 
+
+
+
+
 function animate() {
 	
 	controls.update();								// Update controls for animation - BJL 071817 -
@@ -55,17 +66,29 @@ function animate() {
 	
 }
 
+
+
+
+
 function drag(ev) {
 
 	ev.dataTransfer.setData("id", ev.target.id);	// When draggable element starts to drag set the ID so we know what object is being dragged - BJL 071817 -
 
 }
 
+
+
+
+
 function allowDrop(ev) {
 
 		ev.preventDefault();	// Allow element to dropped on this area - BJL 071817 -
 
 }
+
+
+
+
 
 function drop(ev) {
 
@@ -75,12 +98,13 @@ function drop(ev) {
 	while(scene.children.length > 0){					// Clear all objects from scene first in order to add new object - BJL 071817 -
 		
 			scene.remove(scene.children[0]);
-			console.log(scene.children[0]);
 		
 	}
 	
 	
 	controls.reset();													// Reset controls to show default view on newly added object - BJL 071817 -
+	
+	document.getElementById('menu').removeAttribute("hidden");
 
 	
 	if (id=="spaceship") {																						// If the dragged and dropped object is a spaceship ..  - BJL 071817 -
@@ -114,6 +138,7 @@ function drop(ev) {
 				
 			});
 			
+			object.name = "td-object";
 			
 			scene.add( object );
 			
@@ -136,43 +161,18 @@ function drop(ev) {
 
 		mesh.rotation.x += 10;
 		mesh.rotation.y += 25;
+		
+		mesh.name = "td-object";
 
 		scene.add(mesh);
 
 	}
 	
-	else if (id=="teapot"){
-		
-		// LIGHTS
-		var ambientLight = new THREE.AmbientLight( 0x333333 );	// 0.2
-		var light = new THREE.DirectionalLight( 0xFFFFFF, 1.0 );
-		
-		scene.add( ambientLight );
-		scene.add( light );
-		
-		var teapotSize = 50;
-		var tess = 15;
-		
-		var wireMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, wireframe: true } );
-		var shading = "wireframe";
-		
-		var teapotGeometry = new THREE.TeapotBufferGeometry( 50,
-			10,
-			true,
-			true,
-			true,
-			false,
-			true );
-		
-		console.log(teapotGeometry)
-		
-		teapot = new THREE.Mesh(
-			teapotGeometry, wireMaterial  );	// if no match, pick Phong
-		scene.add( teapot );
-	}
-
-
 }
+
+
+
+
 
 function editText() {
 
@@ -192,4 +192,44 @@ function editText() {
 
 	}
 
+}
+
+
+
+
+
+function moveObject(id) {
+	
+	var movingInterval = 0.05;
+	
+	if 			(id=="up") 		scene.getObjectByName("td-object").position.y += movingInterval;
+	else if (id=="down") 	scene.getObjectByName("td-object").position.y -= movingInterval;
+	else if (id=="right") scene.getObjectByName("td-object").position.x += movingInterval;
+	else if (id=="left") 	scene.getObjectByName("td-object").position.x -= movingInterval;
+	else if (id=="reset") {
+
+		scene.getObjectByName("td-object").position.x = 0;
+		scene.getObjectByName("td-object").position.y = 0;
+
+	}
+	
+}
+
+
+
+
+
+function removeObject() {
+	
+	while(scene.children.length > 0){					// Clear all objects from scene first in order to add new object - BJL 071817 -
+
+				scene.remove(scene.children[0]);
+
+		}
+	
+	document.getElementById("menu").setAttribute("hidden", "true");
+	
+	document.getElementById('td-text').innerText = "";
+	document.getElementById('td-text').setAttribute("hidden", "true");
+	
 }
