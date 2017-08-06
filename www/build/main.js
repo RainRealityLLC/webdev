@@ -98,7 +98,7 @@ var BuildPage = (function () {
         this.app.getRootNav().setRoot(__WEBPACK_IMPORTED_MODULE_3__home_home__["a" /* HomePage */]);
     };
     BuildPage.prototype.saveProject = function () {
-        this.projects.push({ id: 3,
+        this.projects.push({ id: this.projects.length + 1,
             title: this.title,
             object: this.object,
             topText: this.topText,
@@ -107,14 +107,13 @@ var BuildPage = (function () {
             projectName: this.projectName
         });
         this.globalVars.setProjects(this.projects);
-        console.log(this.projects);
         this.app.getRootNav().setRoot(__WEBPACK_IMPORTED_MODULE_3__home_home__["a" /* HomePage */]);
     };
     BuildPage.prototype.updateProject = function () {
-        console.log(this.activeProject.id);
-        for (var i = 0; i < this.projects.length - 1; i++) {
+        for (var i = 0; i < this.projects.length; i++) {
             if (this.projects[i].id === this.activeProject.id) {
-                this.projects[i] = { id: 3,
+                this.projects[i] = {
+                    id: this.projects[i].id,
                     title: this.title,
                     object: this.object,
                     topText: this.topText,
@@ -125,7 +124,6 @@ var BuildPage = (function () {
             }
         }
         this.globalVars.setProjects(this.projects);
-        console.log(this.projects);
         this.app.getRootNav().setRoot(__WEBPACK_IMPORTED_MODULE_3__home_home__["a" /* HomePage */]);
     };
     BuildPage.prototype.updateObject = function (passed_object) {
@@ -158,11 +156,10 @@ BuildPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-build',template:/*ion-inline-start:"C:\Users\benjamin.leskovansky\Desktop\RRP\rrPrototype\src\pages\build\build.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      <h1>Rain Reality</h1>\n\n    </ion-title>\n\n    <ion-toolbar>\n\n      <ion-grid>\n        \n        <ion-row>\n\n          <ion-col style="color: #ffffff; background-color:#4f465a; border-radius: 5px;" margin-right text-center col-1 (click)="openHomePage()">Home</ion-col>\n          <ion-col style="color: #ffffff; background-color:#4f465a; border-radius: 5px;" margin-right text-center col-1>Build</ion-col>\n          <ion-col style="color: #ffffff; background-color:#4f465a; border-radius: 5px;" margin-right text-center col-1>Browse</ion-col>\n          <ion-col style="color: #ffffff; background-color:#4f465a; border-radius: 5px;" margin-right text-center col-1>About</ion-col>\n        \n        </ion-row>\n      \n      </ion-grid>\n\n    </ion-toolbar>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n  <h3 margin>Build Project</h3>\n\n<ion-grid>\n\n  <ion-row>\n\n    <ion-col col-3 padding>\n\n      \n\n      <ion-list>\n\n        <ion-item padding-bottom>\n          <ion-label color="primary" stacked>Add Title</ion-label>\n          <ion-input [(ngModel)]="title" type="text" placeholder="..."></ion-input>\n        </ion-item>\n\n        <ion-item paddin-top>\n          <ion-label color="primary" stacked>Add Object</ion-label>\n          <ion-input [(ngModel)]="objectName" type="search" placeholder="..."></ion-input>\n        </ion-item>\n\n        <ion-item padding-bottom>\n          <p padding *ngFor="let item of objects  | objectFilter: objectName;" (click)="updateObject(item)">{{ item.objectName }}</p>\n        </ion-item>\n\n        <ion-item padding-top>\n          <ion-label color="primary" stacked>Add Top Text</ion-label>\n          <ion-input [(ngModel)]="topText" type="text" placeholder="..."></ion-input>\n        </ion-item>\n        \n        <ion-item padding-top padding-bottom>\n          <ion-label color="primary" stacked>Add Bottom Text</ion-label>\n          <ion-input [(ngModel)]="bottomText" type="text" placeholder="..."></ion-input>\n        </ion-item>\n\n        <ion-item padding-top>\n          <ion-label color="primary" stacked>Author</ion-label>\n          <ion-input [(ngModel)]="author" type="text" placeholder="..."></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label color="primary" stacked>Project Name</ion-label>\n          <ion-input [(ngModel)]="projectName" type="text" placeholder="..."></ion-input>\n        </ion-item>\n\n      </ion-list>\n\n      <button *ngIf="!activeProject && object" ion-button (click)="saveProject()">Save Project</button>\n      <button *ngIf="activeProject && object" ion-button (click)="updateProject()">Update Project</button>\n\n    </ion-col>\n\n    <ion-col padding margin>\n\n      <div id="div-container">\n\n        <div text-center padding class="project-title">{{ title }}</div>\n        <div padding text-wrap class="project-top-text">{{ topText }}</div>\n        <div padding text-wrap class="project-bottom-text">{{ bottomText }}</div>\n\n      </div>\n\n    </ion-col>\n\n  </ion-row>\n\n</ion-grid>\n\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\benjamin.leskovansky\Desktop\RRP\rrPrototype\src\pages\build\build.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */],
-        __WEBPACK_IMPORTED_MODULE_4__providers_global_vars__["a" /* GlobalVarsProvider */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__providers_global_vars__["a" /* GlobalVarsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_global_vars__["a" /* GlobalVarsProvider */]) === "function" && _c || Object])
 ], BuildPage);
 
+var _a, _b, _c;
 //# sourceMappingURL=build.js.map
 
 /***/ }),
@@ -368,7 +365,6 @@ var HomePage = (function () {
     }
     HomePage.prototype.ionViewDidLoad = function () {
         this.projects = this.globalVars.getProjects();
-        console.log(this.projects);
     };
     HomePage.prototype.openBuildPage = function () {
         this.globalVars.setActiveProject(null);
@@ -384,11 +380,10 @@ HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-home',template:/*ion-inline-start:"C:\Users\benjamin.leskovansky\Desktop\RRP\rrPrototype\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      <h1>Rain Reality</h1>\n\n    </ion-title>\n\n    <ion-toolbar>\n\n      <ion-grid>\n        \n        <ion-row>\n          \n          <ion-col style="color: #ffffff; background-color:#4f465a; border-radius: 5px;" margin-right text-center col-1>Home</ion-col>\n          <ion-col style="color: #ffffff; background-color:#4f465a; border-radius: 5px;" margin-right text-center col-1 (click)="openBuildPage()">Build</ion-col>\n          <ion-col style="color: #ffffff; background-color:#4f465a; border-radius: 5px;" margin-right text-center col-1>Browse</ion-col>\n          <ion-col style="color: #ffffff; background-color:#4f465a; border-radius: 5px;" margin-right text-center col-1>About</ion-col>\n        \n        </ion-row>\n      \n      </ion-grid>\n\n    </ion-toolbar>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n  <h3 margin>Build a New Project</h3>\n  <div margin text-center class="project" (click)="openBuildPage()">\n    <div style="background-color: #dddddd" class="project-icon">Add +</div>\n  </div>\n  \n  <h3 margin>Current Projects</h3>\n  <div margin class="project" *ngFor="let item of projects" (click)="loadProject(item)">\n\n    <div class="project-icon">{{ item.projectName }}</div>\n\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\benjamin.leskovansky\Desktop\RRP\rrPrototype\src\pages\home\home.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */],
-        __WEBPACK_IMPORTED_MODULE_3__providers_global_vars__["a" /* GlobalVarsProvider */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_global_vars__["a" /* GlobalVarsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_global_vars__["a" /* GlobalVarsProvider */]) === "function" && _c || Object])
 ], HomePage);
 
+var _a, _b, _c;
 //# sourceMappingURL=home.js.map
 
 /***/ }),
